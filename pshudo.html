@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pshudo element</title>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+      .box {
+        height: 230px;
+        width: 100%;
+        text-align: center;
+      }
+      button {
+        background: rgb(236, 0, 134);
+        color: white;
+        padding: 7px 33px;
+      }
+      .box::after {
+        content: var(--after-content,'\2714');
+        background:var(--after-background,green);
+
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>
+      pShudo element access using javascrit pre defind function querySelector
+    </h2>
+    <div class="box">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, optio
+        rem! Eius iste labore optio ullam tenetur, nisi laboriosam inventore
+        atque error expedita! Voluptas, repudiandae fugit porro obcaecati ipsam
+        praesentium?
+      </p>
+      <button>click</button>
+
+      <script>
+        let b = document.querySelector("button");
+        let box = document.querySelector(".box");
+        // let styles = window.getComputedStyle(box, "::after");
+
+        let p = document.querySelector("p");
+        function pShudo(call) {
+          call();
+        }
+        function callback() {
+          box.style.background = "black";
+          box.style.color = "white";
+        }
+        pShudo(callback);
+
+        // let afterColor=box.style.setProperty('--after-background',"red")
+        // let afterIcon= box.style.setProperty('--after-content',"'\\2605'")
+
+        b.addEventListener("click", () => {
+            // let styles = window.getComputedStyle(box, "::after");
+           
+       
+            
+                if( box.style.setProperty('--after-background','blue')){
+
+                    // box.style.setProperty('--after-background',"red")
+                    box.style.setProperty('--after-background','red')
+                    box.style.setProperty('--after-background','"\\2714"')
+
+                    console.log('green color')
+          }
+          else{
+            box.style.setProperty('--after-content',"'\\2605'")
+            box.style.setProperty('--after-background','blue' )
+            console.log('blue color')
+          }
+            
+         }
+
+        );
+      </script>
+    </div>
+  </body>
+</html>
